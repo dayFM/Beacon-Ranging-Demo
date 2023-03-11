@@ -120,19 +120,15 @@ class BeaconIdentificationManager: NSObject, CLLocationManagerDelegate, Observab
         if state == .inside {
             // Start ranging when inside a region.
             manager.startRangingBeacons(satisfying: beaconRegion!.beaconIdentityConstraint)
-        } else {
-            // Stop ranging when not inside a region.
-            manager.stopRangingBeacons(satisfying: beaconRegion!.beaconIdentityConstraint)
         }
+//        } else {
+            // Stop ranging when not inside a region.
+//            manager.stopRangingBeacons(satisfying: beaconRegion!.beaconIdentityConstraint)
+//        }
     }
     
     /// - Tag: didRange
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        
-        if !beacons.isEmpty {
-            print(beacons[0].accuracy)
-        }
-        
         // Update identified beacons
         for beacon in beacons {
             let identifiedBeacon = ToiletBeacon(

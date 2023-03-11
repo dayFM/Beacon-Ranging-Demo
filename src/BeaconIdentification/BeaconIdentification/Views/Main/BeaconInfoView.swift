@@ -34,9 +34,16 @@ struct BeaconInfoView: View {
                 
                 Text("EST. DIST.")
                     .font(.system(size: 24, weight: .semibold))
-                Text(String(format: "%.2f", toiletBeacon.estDistance) + " m")
-                    .font(.system(size: 24, weight: .ultraLight))
-                    .frame(width: 95, alignment: .leading)
+                
+                if toiletBeacon.estDistance == 99.99 {
+                    Text("Unknown")
+                        .font(.system(size: 24, weight: .ultraLight))
+                        .frame(width: 95, alignment: .leading)
+                } else {
+                    Text(String(format: "%.2f", toiletBeacon.estDistance) + " m")
+                        .font(.system(size: 24, weight: .ultraLight))
+                        .frame(width: 95, alignment: .leading)
+                }
             }
             .frame(width: 334, height: 30, alignment: .leading)
             
